@@ -23,6 +23,7 @@ echo "\e[104m Install pip and some python dependencies \e[0m"
 sudo apt-get update
 sudo apt install -y python3-pip python3-pil python3-smbus python3-matplotlib cmake
 sudo -H pip3 install --upgrade pip
+sudo -H pip3 install testresources
 sudo -H pip3 install flask
 sudo -H pip3 install --upgrade numpy
 
@@ -38,22 +39,22 @@ sudo apt-get install -y libhdf5-serial-dev hdf5-tools libhdf5-dev zlib1g-dev zip
 sudo apt-get install -y python3-pip
 sudo -H pip3 install -U pip setuptools
 sudo -H pip3 install -U numpy grpcio absl-py py-cpuinfo psutil portpicker six mock requests gast h5py astor termcolor protobuf keras-applications keras-preprocessing wrapt google-pasta
-sudo -H pip3 install --pre --extra-index-url https://developer.download.nvidia.com/compute/redist/jp/v43 tensorflow==1.15.2+nv20.3
+sudo -H pip3 install --pre --extra-index-url https://developer.download.nvidia.com/compute/redist/jp/v44 'tensorflow<2'
 
 # Install the pre-built PyTorch pip wheel 
 echo "\e[45m Install the pre-built PyTorch pip wheel  \e[0m"
 cd
-wget -N https://nvidia.box.com/shared/static/3ibazbiwtkl181n95n9em3wtrca7tdzp.whl -O torch-1.5.0-cp36-cp36m-linux_aarch64.whl
-sudo apt-get install -y python3-pip libopenblas-base libopenmpi-dev 
+wget https://nvidia.box.com/shared/static/yr6sjswn25z7oankw8zy1roow9cy5ur1.whl -O torch-1.6.0rc2-cp36-cp36m-linux_aarch64.whl
+sudo apt-get install -y python3-pip libopenblas-base libopenmpi-dev
 sudo -H pip3 install Cython
-sudo -H pip3 install numpy torch-1.5.0-cp36-cp36m-linux_aarch64.whl
+sudo -H pip3 install numpy torch-1.6.0rc2-cp36-cp36m-linux_aarch64.whl
 
 # Install torchvision package
 echo "\e[45m Install torchvision package \e[0m"
 cd
 git clone https://github.com/pytorch/vision
 cd vision
-#git checkout v0.4.0
+git checkout v0.7.0-rc2
 sudo -H python3 setup.py install
 
 # setup Jetson.GPIO
@@ -66,7 +67,7 @@ sudo -H python3 setup.py install
 
 # Install traitlets (master, to support the unlink() method)
 echo "\e[48;5;172m Install traitlets \e[0m"
-sudo -H python3 -m pip install git+https://github.com/ipython/traitlets@master
+sudo -H python3 -m pip install git+https://github.com/ipython/traitlets@4.3.x
 
 # Install Jupyter Lab
 echo "\e[48;5;172m Install Jupyter Lab \e[0m"
@@ -75,6 +76,7 @@ curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -
 sudo apt install -y nodejs 
 sudo -H pip3 install jupyter jupyterlab
 sudo -H jupyter labextension install @jupyter-widgets/jupyterlab-manager
+sudo -H pip3 install ipympl
 
 jupyter lab --generate-config
 python3 -c "from notebook.auth.security import set_password; set_password('$password', '$HOME/.jupyter/jupyter_notebook_config.json')"

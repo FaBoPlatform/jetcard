@@ -145,7 +145,7 @@ cd
 sudo apt-get install libssl1.0-dev
 #sudo apt-get install nodejs-dev node-gyp libssl1.0-dev
 #sudo apt-get install npm
-git clone https://github.com/jaybdub/jupyter_clickable_image_widget
+git clone https://github.com/FaBoPlatform/jupyter_clickable_image_widget
 cd jupyter_clickable_image_widget
 git checkout no_typescript
 sudo -H pip3 install -e .

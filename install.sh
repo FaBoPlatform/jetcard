@@ -37,7 +37,7 @@ sudo apt-get update
 sudo apt-get install -y libhdf5-serial-dev hdf5-tools libhdf5-dev zlib1g-dev zip libjpeg8-dev
 sudo apt-get install -y python3-pip
 sudo pip3 install -U pip setuptools
-sudo pip3 install -U numpy grpcio absl-py py-cpuinfo psutil portpicker six mock requests gast h5py astor termcolor protobuf keras-applications keras-preprocessing wrapt google-pasta
+sudo pip3 install -U numpy grpcio absl-py py-cpuinfo psutil portpicker six mock requests gast h5py==2.10.0 astor termcolor protobuf keras-applications keras-preprocessing wrapt google-pasta
 sudo pip3 install --pre --extra-index-url https://developer.download.nvidia.com/compute/redist/jp/v43 tensorflow==1.15.2+nv20.3
 
 # Install the pre-built PyTorch pip wheel 
